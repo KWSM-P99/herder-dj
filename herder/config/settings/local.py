@@ -66,3 +66,8 @@ INSTALLED_APPS += ["django_extensions"]  # noqa: F405
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+
+# this must match the configured callback in the Discord Developer Portal for the bot being used
+# using the localhost is setup already for use in dockerized deployment for local development
+LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL', default='http://localhost:8000/accounts/discord/login/callback/')

@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    'allauth.socialaccount.providers.discord',
     "django_celery_beat",
     "rest_framework",
     "rest_framework.authtoken",
@@ -142,6 +143,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    #"allauth.account.middleware.SocialAccountMiddleware"
 ]
 
 # STATIC
@@ -336,3 +338,17 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+# grab local envs from env files
+DISCORD_CLIENT_ID = env('DISCORD_CLIENT_ID')
+DISCORD_CLIENT_SECRET = env('DISCORD_CLIENT_SECRET')
+
+SOCIALACCOUNT_PROVIDERS = {
+    'discord': {
+        'APP': {
+            'client_id': DISCORD_CLIENT_ID,
+            'secret': DISCORD_CLIENT_SECRET,
+            'key': ''
+        }
+    }
+}
