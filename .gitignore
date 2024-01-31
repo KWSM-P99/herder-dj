@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 
 herder/.envs/.local/.django
+herder/.envs/.local/.django
